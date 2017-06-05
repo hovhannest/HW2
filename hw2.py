@@ -1,5 +1,6 @@
 import random
-
+import pandas_datareader.data as web
+import matplotlib.pyplot as plt
 
 def mean(numbers):
     return float(sum(numbers)) / max(len(numbers), 1)
@@ -31,8 +32,13 @@ def task_3():
 
 
 def task_4():
-    pass
+    data = [web.DataReader("IBM","google"), web.DataReader("AAPL","google"), web.DataReader("MSFT","google")];
+    for row in data:
+        print row.head(7)
+
 
 def task_5():
-    pass
-
+    data = [web.DataReader("IBM","google"), web.DataReader("AAPL","google"), web.DataReader("MSFT","google")];
+    for row in data:
+        plt.plot(row["High"])
+    plt.show()
